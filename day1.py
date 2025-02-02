@@ -1,3 +1,5 @@
+import sys
+
 def main():
     print("Hello, World!")
     while True:
@@ -38,7 +40,7 @@ def divide(a, b):
     try:
         return a / b
     except ZeroDivisionError:
-        return~"Denominator must be non-zero"
+        sys.exit("Denominator must be non-zero")
 
 if __name__ == "__main__":
     main()
