@@ -1,6 +1,7 @@
 def main():
     try:
         inpt = int(input("Enter a number: "))
+        print(inpt)
     except ValueError:
         print("Invalid input, Enter an integer")
 
