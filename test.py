@@ -260,7 +260,7 @@ def solution(input_string):
             result.append(s[i])
             i += 1
     return "".join(result)
-'''
+
 def count_minutes(period: str) -> int:
     # split start and end
     start_str, end_str = [p.strip() for p in period.split('-')]
@@ -287,3 +287,34 @@ def count_minutes(period: str) -> int:
 
     # Count how many "minute ticks" between them
     return (last_minute - first_minute) // 60 + 1
+
+def add_days(date, n):
+    # Helper: check if leap year
+    def is_leap(year):
+        return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
+    
+    # Days per month (non-leap year)
+    month_days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    
+    # Parse date
+    year, month, day = map(int, date.split("-"))
+    
+    # Add days
+    day += n
+    while True:
+        # Get days in current month
+        days_in_month = month_days[month]
+        if month == 2 and is_leap(year):
+            days_in_month = 29
+        
+        if day <= days_in_month:
+            break
+        else:
+            day -= days_in_month
+            month += 1
+            if month > 12:
+                month = 1
+                year += 1
+    
+    return f"{year:04d}-{month:02d}-{day:02d}"
+'''
