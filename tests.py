@@ -317,4 +317,41 @@ def add_days(date, n):
                 year += 1
     
     return f"{year:04d}-{month:02d}-{day:02d}"
+
+import re
+
+def reverse_words_in_sentences(sentences, words):
+    result = []
+    
+    for sentence, word in zip(sentences, words):
+        reversed_word = word[::-1]
+        
+        def replacer(match):
+            found = match.group(0)
+            # Preserve capitalization of the first letter
+            if found[0].isupper():
+                return reversed_word.capitalize()
+            else:
+                return reversed_word
+        
+        # Use word boundaries (\b) to match the word exactly
+        pattern = r'\b' + re.escape(word) + r'\b'
+        new_sentence = re.sub(pattern, replacer, sentence, flags=re.IGNORECASE)
+        result.append(new_sentence)
+    
+    return result
+
+def spot_swaps(source: str, target: str) -> list:
+    # TODO: implement
+    swaps = []
+    i = 0
+    n = len(source)
+    
+    while i < n - 1:
+        if source[i] != target[i] and source[i + 1] == target[i] and source[i] == target[i + 1]:
+            swaps.append((i, source[i], source[i + 1]))
+            i += 2
+        else:
+            i += 1
+    return swaps
 '''
