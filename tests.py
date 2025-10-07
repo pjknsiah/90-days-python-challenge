@@ -354,4 +354,12 @@ def spot_swaps(source: str, target: str) -> list:
         else:
             i += 1
     return swaps
+
+def common_elements(listA, listB):
+    # TODO: Implement the function to find the common elements in the two arrays
+    result = []
+    for i in listA:
+        if i in listB:
+            result.append(i)
+    return result
 '''
